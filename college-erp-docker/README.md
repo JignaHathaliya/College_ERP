@@ -124,6 +124,8 @@ docker compose down
   front of others.
 
 ## Run from Docker Hub
-docker pull jigna127/college-erp:latest
+```bash
+docker pull jigna127/college-erp:latest                  
 docker run -d -p 8081:80 --name erp-web jigna127/college-erp:latest
 Open: http://localhost:8081
+```
