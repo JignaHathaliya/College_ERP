@@ -1,0 +1,62 @@
+version: "3.8"
+
+services:
+
+  # ---------- College ERP Website ----------
+  erp-web:
+    build: ./app
+    container_name: erp-web
+    ports:
+      - "8081:80"
+    restart: unless-stopped
+    networks:
+      - erp-net
+
+  # ---------- Monitoring: container-level metrics ----------
+  cadvisor:
+    image: gcr.io/cadvisor/cadvisor:latest
+    container_name: cadvisor
+    ports:
+      - "8080:8080"
+    volumes:
+      - /:/rootfs:ro
+      - /var/run:/var/run:ro
+      - /sys:/sys:ro
+      - /var/lib/docker/:/var/lib/docker:ro
+      - /dev/disk/:/dev/disk:ro
+    restart: unless-stopped
+    networks:
+      - erp-net
+
+  # ---------- Monitoring: metrics storage ----------
+  prometheus:
+    image: prom/prometheus:latest
+    container_name: prometheus
+    volumes:
+      - ./monitoring/prometheus.yml:/etc/prometheus/prometheus.yml:ro
+    ports:
+      - "9090:9090"
+    restart: unless-stopped
+    depends_on:
+      - cadvisor
+    networks:
+      - erp-net
+
+  # ---------- Monitoring: dashboards ----------
+  grafana:
+    image: grafana/grafana:latest
+    container_name: grafana
+    ports:
+      - "3000:3000"
+    environment:
+      - GF_SECURITY_ADMIN_USER=admin
+      - GF_SECURITY_ADMIN_PASSWORD=admin
+    restart: unless-stopped
+    depends_on:
+      - prometheus
+    networks:
+      - erp-net
+
+networks:
+  erp-net:
+    driver: bridge

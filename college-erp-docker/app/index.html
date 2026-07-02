@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Dashboard · Sanskar College ERP</title>
+<link rel="stylesheet" href="assets/style.css">
+</head>
+<body>
+<div class="app">
+
+  <aside class="sidebar">
+    <div class="brand">
+      <div class="brand-mark">NU</div>
+      <div class="brand-text">
+        <div class="name">Nirma University</div>
+        <div class="sub">ERP PLATFORM</div>
+      </div>
+    </div>
+    <nav class="nav">
+      <a href="index.html" class="active"><span class="dot"></span> Dashboard</a>
+      <a href="students.html"><span class="dot"></span> Students</a>
+      <a href="attendance.html"><span class="dot"></span> Attendance</a>
+      <a href="fees.html"><span class="dot"></span> Fees</a>
+      <a href="notices.html"><span class="dot"></span> Notices</a>
+      <a href="monitoring.html"><span class="dot"></span> System Monitoring</a>
+    </nav>
+    <div class="sidebar-foot">
+      Deployed via Docker<br>
+      Container: <span id="hostname">erp-web</span>
+    </div>
+  </aside>
+
+  <div class="main">
+    <div class="topbar">
+      <div>
+        <h1>Dashboard</h1>
+        <div class="meta">Overview · Odd Semester 2026</div>
+      </div>
+      <div class="topbar-right">
+        <span class="pill"><span class="blip"></span> System Online</span>
+        <div class="avatar">AD</div>
+      </div>
+    </div>
+
+    <div class="content">
+      <div class="grid cols-4">
+        <div class="card stat">
+          <div class="label">Total Students</div>
+          <div class="value">1,248</div>
+          <div class="delta up">▲ 4.2% this semester</div>
+        </div>
+        <div class="card stat">
+          <div class="label">Attendance Today</div>
+          <div class="value">86%</div>
+          <div class="delta up">▲ 2.1% vs yesterday</div>
+        </div>
+        <div class="card stat">
+          <div class="label">Fees Collected</div>
+          <div class="value">₹ 42.6L</div>
+          <div class="delta down">▼ pending ₹6.1L</div>
+        </div>
+        <div class="card stat">
+          <div class="label">Active Notices</div>
+          <div class="value">6</div>
+          <div class="delta up">2 posted this week</div>
+        </div>
+      </div>
+
+      <br>
+
+      <div class="grid cols-2">
+        <div class="card">
+          <h2>Department-wise Strength <span>· current semester</span></h2>
+          <table>
+            <thead><tr><th>Department</th><th>Students</th><th>Attendance</th><th>Status</th></tr></thead>
+            <tbody>
+              <tr><td>Computer Engineering</td><td>312</td><td>
+                <div class="progress"><span style="width:88%"></span></div></td><td><span class="badge ok">Healthy</span></td></tr>
+              <tr><td>Information Technology</td><td>276</td><td>
+                <div class="progress"><span style="width:82%"></span></div></td><td><span class="badge ok">Healthy</span></td></tr>
+              <tr><td>Electronics &amp; Comm.</td><td>240</td><td>
+                <div class="progress"><span style="width:71%"></span></div></td><td><span class="badge warn">Watch</span></td></tr>
+              <tr><td>Mechanical Engineering</td><td>228</td><td>
+                <div class="progress"><span style="width:76%"></span></div></td><td><span class="badge ok">Healthy</span></td></tr>
+              <tr><td>Civil Engineering</td><td>192</td><td>
+                <div class="progress"><span style="width:63%"></span></div></td><td><span class="badge danger">Low</span></td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="card">
+          <h2>Recent Notices</h2>
+          <div class="list">
+            <div class="list-item">
+              <div class="idot"></div>
+              <div>
+                <div class="title">Mid-sem exam schedule released</div>
+                <div class="desc">Check the Notices tab for date sheet.</div>
+              </div>
+              <div class="time">Today</div>
+            </div>
+            <div class="list-item">
+              <div class="idot"></div>
+              <div>
+                <div class="title">Fee payment deadline extended</div>
+                <div class="desc">New last date: 15th July.</div>
+              </div>
+              <div class="time">1 day ago</div>
+            </div>
+            <div class="list-item">
+              <div class="idot"></div>
+              <div>
+                <div class="title">Annual sports meet registration open</div>
+                <div class="desc">Register via the sports office.</div>
+              </div>
+              <div class="time">3 days ago</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <br>
+
+      <div class="card">
+        <h2>Platform Note</h2>
+        <p style="font-size:13.5px;color:var(--muted);line-height:1.6;margin:0;">
+          This ERP interface uses static demo data — no database is connected, by design.
+          The focus of this project is the <b>containerized deployment</b>: this site runs from an
+          Nginx container built with Docker, alongside a monitoring stack (cAdvisor, Prometheus, Grafana)
+          that tracks the container's live resource usage. See the <a href="monitoring.html" style="color:var(--navy);font-weight:700;">System Monitoring</a> page for details.
+        </p>
+      </div>
+
+      <div class="footnote">Sanskar College ERP · Docker-based Deployment &amp; Monitoring Platform · Demo Build</div>
+    </div>
+  </div>
+</div>
+</body>
+</html>

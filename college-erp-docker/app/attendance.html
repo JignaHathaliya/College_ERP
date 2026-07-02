@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Attendance · Sanskar College ERP</title>
+<link rel="stylesheet" href="assets/style.css">
+</head>
+<body>
+<div class="app">
+
+  <aside class="sidebar">
+    <div class="brand">
+      <div class="brand-mark">SC</div>
+      <div class="brand-text">
+        <div class="name">Sanskar College</div>
+        <div class="sub">ERP PLATFORM</div>
+      </div>
+    </div>
+    <nav class="nav">
+      <a href="index.html"><span class="dot"></span> Dashboard</a>
+      <a href="students.html"><span class="dot"></span> Students</a>
+      <a href="attendance.html" class="active"><span class="dot"></span> Attendance</a>
+      <a href="fees.html"><span class="dot"></span> Fees</a>
+      <a href="notices.html"><span class="dot"></span> Notices</a>
+      <a href="monitoring.html"><span class="dot"></span> System Monitoring</a>
+    </nav>
+    <div class="sidebar-foot">
+      Deployed via Docker<br>
+      Container: <span>erp-web</span>
+    </div>
+  </aside>
+
+  <div class="main">
+    <div class="topbar">
+      <div>
+        <h1>Attendance</h1>
+        <div class="meta">Today · 02 July 2026</div>
+      </div>
+      <div class="topbar-right">
+        <span class="pill"><span class="blip"></span> System Online</span>
+        <div class="avatar">AD</div>
+      </div>
+    </div>
+
+    <div class="content">
+      <div class="grid cols-3">
+        <div class="card stat"><div class="label">Present</div><div class="value">1,073</div></div>
+        <div class="card stat"><div class="label">Absent</div><div class="value">175</div></div>
+        <div class="card stat"><div class="label">Overall %</div><div class="value">86%</div></div>
+      </div>
+      <br>
+      <div class="card">
+        <h2>Class-wise Attendance</h2>
+        <table>
+          <thead><tr><th>Class</th><th>Subject</th><th>Present</th><th>Total</th><th>%</th></tr></thead>
+          <tbody>
+            <tr><td>CE - Sem 4</td><td>Operating Systems</td><td>58</td><td>64</td><td>
+              <div class="progress"><span style="width:91%"></span></div></td></tr>
+            <tr><td>IT - Sem 4</td><td>Database Systems</td><td>49</td><td>60</td><td>
+              <div class="progress"><span style="width:82%"></span></div></td></tr>
+            <tr><td>EC - Sem 6</td><td>VLSI Design</td><td>44</td><td>52</td><td>
+              <div class="progress"><span style="width:85%"></span></div></td></tr>
+            <tr><td>ME - Sem 6</td><td>Thermodynamics</td><td>36</td><td>58</td><td>
+              <div class="progress"><span style="width:62%"></span></div></td></tr>
+            <tr><td>CV - Sem 8</td><td>Structural Analysis</td><td>40</td><td>50</td><td>
+              <div class="progress"><span style="width:80%"></span></div></td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="footnote">Static demo data · in a production ERP this would sync from biometric / RFID attendance devices.</div>
+    </div>
+  </div>
+</div>
+</body>
+</html>

@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>System Monitoring · Sanskar College ERP</title>
+<link rel="stylesheet" href="assets/style.css">
+</head>
+<body>
+<div class="app">
+
+  <aside class="sidebar">
+    <div class="brand">
+      <div class="brand-mark">SC</div>
+      <div class="brand-text">
+        <div class="name">Sanskar College</div>
+        <div class="sub">ERP PLATFORM</div>
+      </div>
+    </div>
+    <nav class="nav">
+      <a href="index.html"><span class="dot"></span> Dashboard</a>
+      <a href="students.html"><span class="dot"></span> Students</a>
+      <a href="attendance.html"><span class="dot"></span> Attendance</a>
+      <a href="fees.html"><span class="dot"></span> Fees</a>
+      <a href="notices.html"><span class="dot"></span> Notices</a>
+      <a href="monitoring.html" class="active"><span class="dot"></span> System Monitoring</a>
+    </nav>
+    <div class="sidebar-foot">
+      Deployed via Docker<br>
+      Container: <span>erp-web</span>
+    </div>
+  </aside>
+
+  <div class="main">
+    <div class="topbar">
+      <div>
+        <h1>System Monitoring</h1>
+        <div class="meta">Live container &amp; host metrics</div>
+      </div>
+      <div class="topbar-right">
+        <span class="pill"><span class="blip"></span> Stack Running</span>
+        <div class="avatar">AD</div>
+      </div>
+    </div>
+
+    <div class="content">
+      <div class="card">
+        <h2>How this ERP is monitored</h2>
+        <p style="font-size:13.5px;color:var(--muted);line-height:1.7;margin:0 0 16px;">
+          This platform runs as a set of Docker containers defined in <code>docker-compose.yml</code>.
+          Alongside the ERP website (this site), three monitoring containers track resource usage of
+          every container in real time — no code changes to the ERP app are needed for this to work.
+        </p>
+        <div class="grid cols-3">
+          <div class="card" style="box-shadow:none;">
+            <div class="label" style="font-size:12px;color:var(--muted);font-weight:700;text-transform:uppercase;">cAdvisor</div>
+            <p style="font-size:13px;margin:8px 0 12px;color:var(--text);">Collects per-container CPU, memory, network &amp; disk stats.</p>
+            <a class="btn ghost" href="http://localhost:8080" target="_blank">Open :8080 →</a>
+          </div>
+          <div class="card" style="box-shadow:none;">
+            <div class="label" style="font-size:12px;color:var(--muted);font-weight:700;text-transform:uppercase;">Prometheus</div>
+            <p style="font-size:13px;margin:8px 0 12px;color:var(--text);">Scrapes and stores metrics from cAdvisor every 15s.</p>
+            <a class="btn ghost" href="http://localhost:9090" target="_blank">Open :9090 →</a>
+          </div>
+          <div class="card" style="box-shadow:none;">
+            <div class="label" style="font-size:12px;color:var(--muted);font-weight:700;text-transform:uppercase;">Grafana</div>
+            <p style="font-size:13px;margin:8px 0 12px;color:var(--text);">Visual dashboards built on top of Prometheus data.</p>
+            <a class="btn ghost" href="http://localhost:3000" target="_blank">Open :3000 →</a>
+          </div>
+        </div>
+      </div>
+
+      <br>
+
+      <div class="card">
+        <h2>Container Map</h2>
+        <table>
+          <thead><tr><th>Container</th><th>Image</th><th>Port</th><th>Role</th></tr></thead>
+          <tbody>
+            <tr><td>erp-web</td><td>nginx:alpine (custom build)</td><td>8081 → 80</td><td>Serves this ERP website</td></tr>
+            <tr><td>cadvisor</td><td>gcr.io/cadvisor/cadvisor</td><td>8080</td><td>Container resource metrics</td></tr>
+            <tr><td>prometheus</td><td>prom/prometheus</td><td>9090</td><td>Metrics scraping &amp; storage</td></tr>
+            <tr><td>grafana</td><td>grafana/grafana</td><td>3000</td><td>Metrics dashboard UI</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="footnote">Note: Grafana / Prometheus / cAdvisor links only work if the full <code>docker-compose.yml</code> stack is running, not just the erp-web container.</div>
+    </div>
+  </div>
+</div>
+</body>
+</html>
