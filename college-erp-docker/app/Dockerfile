@@ -1,5 +1,5 @@
 # --------------------------------------------------
-# Sanskar College ERP - Web Frontend
+# Nirma University ERP - Web Frontend
 # Simple static site served by Nginx inside Docker
 # --------------------------------------------------
 FROM nginx:alpine
