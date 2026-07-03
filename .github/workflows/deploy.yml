@@ -25,7 +25,8 @@ jobs:
       - name: Build and push Docker image
         uses: docker/build-push-action@v5
         with:
-          context: ./app
+          context: ./college-erp-docker/app
+          file: ./college-erp-docker/app/Dockerfile
           push: true
           tags: ${{ secrets.DOCKERHUB_USERNAME }}/college-erp:latest
 
@@ -38,9 +39,8 @@ jobs:
           port: ${{ secrets.EC2_SSH_PORT }}
           script: |
             set -e
-            docker pull ${{ secrets.DOCKERHUB_USERNAME }}/college-erp:latest
-            docker stop erp-web || true
-            docker rm erp-web || true
-            docker run -d -p 8081:80 --name erp-web \
+            sudo docker pull ${{ secrets.DOCKERHUB_USERNAME }}/college-erp:latest
+            sudo docker stop erp-web || true
+            sudo docker rm erp-web || true
+            sudo docker run -d -p 8081:80 --name erp-web \
               ${{ secrets.DOCKERHUB_USERNAME }}/college-erp:latest
-
